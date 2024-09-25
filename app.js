@@ -1,12 +1,17 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const app=express()
+const app = express();
+const dbConnect = require("./config/mongo");
 
-app.use(cors())
+app.use(cors());
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
-app.listen(port,() => {
-    console.log('Tu app esta lista por http://localhost:'+port)
-})
+app.use("/api/", require("./routes"));
+
+app.listen(port, () => {
+  console.log("Tu app esta lista por http://localhost:" + port);
+});
+
+dbConnect();
