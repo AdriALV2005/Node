@@ -11,7 +11,6 @@ const {
   deleteItem,
 } = require("../controllers/tracks");
 const router = express.Router();
-const customHeader = require("../middleware/customHeader");
 
 router.get("/", getItems);
 router.get("/:id", validatorGetItem, getItem);
